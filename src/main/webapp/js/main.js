@@ -6,7 +6,7 @@ angular.module('webappApp')
 			
 			$scope.usuario={};
 			
-			
+			$scope.activa={};
 			$scope.validar = function(){
 				
 				console.log("validando Acceso");
@@ -19,9 +19,10 @@ angular.module('webappApp')
 					}).success(function(data){
 						
 						if (data.success){
+							$scope.activa.menu =  true;
 							console.log(data.mensaje);
-							$location.path("/welcome"); 
 						}else{
+							$scope.activa.menu =  false;
 							alert(data.errorMensaje);
 							console.log(data.errorMensaje);
 						}

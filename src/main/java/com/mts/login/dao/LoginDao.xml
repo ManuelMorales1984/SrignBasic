@@ -12,6 +12,7 @@
 			<value>
 				<![CDATA[
 						SELECT  NOMBRE,PASSWORD  FROM USUARIOS
+						WHERE ROWNUM = 1
 				]]>
 			</value>
 		</property>
