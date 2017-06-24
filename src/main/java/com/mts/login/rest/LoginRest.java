@@ -1,5 +1,7 @@
 package com.mts.login.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Component;
 import com.mts.domain.CommonRequest;
 import com.mts.domain.CommonResponse;
 import com.mts.login.service.LoginServiceImpl;
+import com.mts.login.vo.PantallasVO;
+import com.mts.login.vo.RolesVO;
 import com.mts.login.vo.UserVO;
 
 import testSpringItc.HelloWord;
@@ -37,7 +41,6 @@ public class LoginRest {
 		CommonResponse respuesta = new CommonResponse();
 		UserVO valores = new UserVO();
 		
-		valores = loginService.nombre();
 		if (LOG.isDebugEnabled()){
 			LOG.debug("MENSAJE CON LOG4J");
 			LOG.debug(valores.getPass());
@@ -54,6 +57,29 @@ public class LoginRest {
 		
 		
 		return respuesta;
+		
+	}
+	
+	
+	@POST
+	@Path("roles")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<RolesVO> roles(){
+	
+		return loginService.roles();
+		
+		
+	}
+	
+	@POST
+	@Path("pantallas")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<PantallasVO> pantallas(){
+	
+		return loginService.pantallas();
+		
 		
 	}
 

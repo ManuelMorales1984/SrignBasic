@@ -2,45 +2,100 @@ package com.mts.login.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
 
 import com.mts.domain.Jdbc;
+import com.mts.login.vo.PantallasVO;
+import com.mts.login.vo.RolesVO;
 import com.mts.login.vo.UserVO;
 
 public class LoginDaoImpl extends Jdbc implements LoginDao {
-   private String qryGetUsuario;
+	
+	
+	
+   private String qryRoles;
+   private String qryPantalllas;
 
    
      
 @Override
-   public UserVO nombre(){
-	UserVO result =  this.jdbcTemplate.queryForObject(qryGetUsuario,USER_MAPPER);
+   public List<RolesVO> roles(){
+	List<RolesVO> result =  this.jdbcTemplate.query(qryRoles,ROLES_MAPPER);
 	return result;
 	   
    }
 
 
-private static final RowMapper<UserVO> USER_MAPPER = new RowMapper<UserVO>() {
-	@Override
-	public UserVO mapRow(ResultSet rs, int num) throws SQLException {
-		UserVO result = new UserVO();
 
-		result.setPass(rs.getString("PASSWORD"));
-		result.setUser(rs.getString("NOMBRE"));
+@Override
+public List<PantallasVO> pantallas(){
+	List<PantallasVO> result =  this.jdbcTemplate.query(qryPantalllas,PANTALLAS_MAPPER);
+	return result;
+	   
+}
+
+
+private static final RowMapper<PantallasVO> PANTALLAS_MAPPER = new RowMapper<PantallasVO>() {
+	@Override
+	public PantallasVO mapRow(ResultSet rs, int num) throws SQLException {
+		PantallasVO result = new PantallasVO();
+
+		result.setDsUrl(rs.getString("DS_URL"));
+		result.setMenu(rs.getString("MENU"));
+		result.setPantalla(rs.getString("PANTALLA"));
+		result.setPantallaId(rs.getString("PANTALLAID"));
 		return result;
 	}
 };
 
 
-public String getQryGetUsuario() {
-	return qryGetUsuario;
+
+
+
+
+
+
+private static final RowMapper<RolesVO> ROLES_MAPPER = new RowMapper<RolesVO>() {
+	@Override
+	public RolesVO mapRow(ResultSet rs, int num) throws SQLException {
+		RolesVO result = new RolesVO();
+
+		result.setRolId(rs.getString("ROLID"));
+		result.setDsRol(rs.getString("ROL"));
+		return result;
+	}
+};
+
+
+
+public String getQryRoles() {
+	return qryRoles;
 }
 
-public void setQryGetUsuario(String qryGetUsuario) {
-	this.qryGetUsuario = qryGetUsuario;
+
+
+public void setQryRoles(String qryRoles) {
+	this.qryRoles = qryRoles;
 }
-   
+
+
+
+public String getQryPantalllas() {
+	return qryPantalllas;
+}
+
+
+
+public void setQryPantalllas(String qryPantalllas) {
+	this.qryPantalllas = qryPantalllas;
+}
+
+
+
+
+
    
    
 

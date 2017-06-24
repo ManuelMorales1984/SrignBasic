@@ -1,9 +1,14 @@
 package com.mts.login.dao;
 
-import com.mts.login.vo.UserVO;
+import java.util.List;
+
+import com.mts.login.vo.PantallasVO;
+import com.mts.login.vo.RolesVO;
 
 public interface LoginDao {
 
-	UserVO nombre();
+
+	List<PantallasVO> pantallas();
+	List<RolesVO> roles();
 
 }

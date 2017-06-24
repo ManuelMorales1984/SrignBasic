@@ -1,10 +1,14 @@
 package com.mts.login.service;
 
-import com.mts.login.vo.UserVO;
+import java.util.List;
+
+import com.mts.login.vo.PantallasVO;
+import com.mts.login.vo.RolesVO;
 
 public interface LoginService {
 
-	UserVO nombre();
-	
+	List<PantallasVO> pantallas();
+	List<RolesVO> roles();
+
 
 }

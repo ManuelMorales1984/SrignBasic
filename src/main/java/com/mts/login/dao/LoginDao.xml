@@ -8,11 +8,19 @@
 	<bean name="LoginDao" class="com.mts.login.dao.LoginDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 		
-			<property name="qryGetUsuario">
+			<property name="qryRoles">
 			<value>
 				<![CDATA[
-						SELECT  NOMBRE,PASSWORD  FROM USUARIOS
-						WHERE ROWNUM = 1
+					SELECT ROLID,ROL FROM MTS_SEG_ROLES
+				]]>
+			</value>
+		</property>
+		
+		
+		<property name="qryPantalllas">
+			<value>
+				<![CDATA[
+						SELECT * FROM MTS_SEG_PANTALLAS
 				]]>
 			</value>
 		</property>

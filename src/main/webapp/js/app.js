@@ -3,7 +3,10 @@
 var app = angular
   .module('webappApp', [
     'ngRoute',
-    'ngTable'
+    'ngTable',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize'
     
   ]).config(function ($routeProvider) {
 	    $routeProvider

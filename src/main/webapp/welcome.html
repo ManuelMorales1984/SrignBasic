@@ -5,5 +5,29 @@
   	<h1 class="offset-sm-4 col-sm-10"> Ingresa tus Datos</h1>
   	<br>
   	
+  	<select ng-model="listas.selectRolesValue" ng-change="cambio();"  ng-options="x.dsRol for x in listas.roles">
+	</select>
+	
+	<input ng-model = "formulario.nombre">
+  	
+  	<br>
+<br>
+  	
   </form>
-</div>
+			<table ng-table="tableParams" 
+				class="table table-striped  table-bordered">
+				<tr ng-repeat="catalog in $data">
+					<td data-title="'Clave Pantalla'" class="active" sortable="'pantallaId'"
+						header-class="flechas_columnas">{{catalog.pantallaId}}</td>
+					<td data-title="'Pantalla'" class="text" sortable="'pantalla'"
+						header-class="flechas_columnas">{{catalog.pantalla}}</td>
+					<td data-title="'Url de la pantalla'" class="active" sortable="'dsUrl'"
+						header-class="flechas_columnas">{{catalog.dsUrl}}</td>
+					<td data-title="'Menu'" class="active" sortable="'menu'"
+						header-class="flechas_columnas">{{catalog.menu}}</td>	
+					<td data-title="'Lectura'" class="active" sortable="'lectura'"
+						header-class="flechas_columnas"><input type="checkbox" ng-click="activar(catalog)"></td>	
+						
+				</tr>
+			</table>
+		</div>
