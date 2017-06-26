@@ -18,6 +18,10 @@ var app = angular
 	        templateUrl: 'welcome.html',
 	        controller: 'WelcomeCtrl'
 	      })
+	       .when('/parametros', {
+	        templateUrl: 'parametros.html',
+	        controller: 'ParametrosCtrl'
+	      })
 	      .otherwise({
 	        redirectTo: '/'
 	      });

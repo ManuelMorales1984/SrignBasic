@@ -46,25 +46,24 @@ angular.module('webappApp')
 	  
 	  
 	  $scope.filters = {myfilter: ''}; 
+	  $scope.filters2 = {myfilter: 'Reglas'};
 	  
 	  
 	$scope.tableParams = new ngTableParams({
 		        page: 1,            // show first page
 		        count: 10,
 		        filter: $scope.filters,
-		        sorting: {
-		        	
+		        sorting: {	
 		        	     // initial sorting
 
 		        }
 		    }, {
-		      count:[], //here put empty counts
+		     count:[], //here put empty counts
 	         total: $scope.tablas.pantallas.length, // length of data
-		        getData: function($defer, params) {
+		      getData: function($defer, params) {
 		         
-		            var filteredData = params.filter() ? $filter('filter')($scope.tablas.pantallas, params.filter().myfilter) : data;
-	               var orderedData = params.sorting() ?
-	                       $filter('orderBy')(filteredData, params.orderBy()) :
+		           var filteredData = params.filter() ? $filter('filter')($scope.tablas.pantallas, params.filter().myfilter) : data;
+	               var orderedData = params.sorting() ?  $filter('orderBy')(filteredData, params.orderBy()) :
 	                       data;
 	                    params.total(orderedData.length); // set total for recalc pagination
 		          $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
@@ -72,16 +71,60 @@ angular.module('webappApp')
 	       $scope: { $data: {} }
 		   
 		    });
-		  
-	  $scope.activar = function(catalog){
-		  console.log(catalog);
-		  alert(JSON.stringify(catalog));
-	  }
 	
-	  $scope.$watch("tablas.pantallas", function(){
+	
+	
+	
+	$scope.tableparams2 = new ngTableParams({
+        page: 1,            // show first page
+        count: 10,
+        filter: $scope.filters2,
+        sorting: {	
+        	     // initial sorting
+
+        }
+    }, {
+      count:[], //here put empty counts
+     total: $scope.tablas.pantallas.length, // length of data
+        getData: function($defer, params) {
+         
+            var filteredData = params.filter() ? $filter('filter')($scope.tablas.pantallas, params.filter().myfilter) : data;
+           var orderedData = params.sorting() ?
+                   $filter('orderBy')(filteredData, params.orderBy()) :
+                   data;
+                params.total(orderedData.length); // set total for recalc pagination
+          $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+        },
+   $scope: { $data: {} }
+   
+    });
+	
+	
+	$scope.$watch("tablas.pantallas", function(){
 	      $scope.tableParams.reload(); 
 	      console.log($scope.tablas.pantallas);
 	  })
+	  
+	  
+	  $scope.$watch("tablas.pantallas", function(){
+	      $scope.tableparams2.reload(); 
+	      console.log($scope.tablas.pantallas);
+	  })
+	
+	
+	
+	
+		  
+	  $scope.activar = function(catalog){
+		  console.log(catalog);
+		  $scope.nombre = catalog.menu;
+		  
+		  alert(JSON.stringify(catalog));
+	  }
+	
+	  
+	  
+	  
 	  
 			 
 }]);

@@ -1,0 +1,82 @@
+<br>
+<br>
+<div class="container">
+  <form>
+  	<h1 class="offset-sm-4 col-sm-10"> Parametros Generales</h1>
+  	<br>
+  	
+ <br>
+<br>
+
+
+<br>
+<br>
+
+<br>
+<br> 
+  
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+		<div> izq   akjdhajkshDJKAShdjhasjkdhas</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+		<div>centro     ASLKDJLASKDJHKLASJDKLASJDaMNSBambsna</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+		<div>derecha   KJASHDJKSAHKD</div>
+	</div>
+
+</div>  
+  
+  
+  
+  	 
+
+<button class="btn btn-primary btn-lg" ng-click="mostrar();">
+  Ver Datos..
+</button>
+
+
+<table ng-table="tableParams" 
+				class="table table-striped  table-bordered">
+				<tr ng-repeat="registro in $data">
+					<td data-title="'Clave Pantalla'" class="active" sortable="'pantallaId'"
+						header-class="flechas_columnas">{{registro.pantallaId}}</td>
+					<td data-title="'Pantalla'" class="text" sortable="'pantalla'"
+						header-class="flechas_columnas">{{registro.pantalla}}</td>
+					<td data-title="'Url de la pantalla'" class="active" sortable="'dsUrl'"
+						header-class="flechas_columnas">{{registro.dsUrl}}</td>
+					<td data-title="'Menu'" class="active" sortable="'menu'"
+						header-class="flechas_columnas">{{registro.menu}}</td>	
+					<td data-title="'Editar'" class="active" sortable="'lectura'"
+						header-class="flechas_columnas"><span class="glyphicon glyphicon-pencil" ng-click="activar(registro)"> </span></td>	
+						
+				</tr>
+			</table>
+
+</form>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <input type="text" ng-model="parametros.edad">
+         <input type="text" ng-model="parametros.pantalla">
+         <div class="alert alert-danger" role="alert" ng-show="bandera.validate">
+		 	 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  				<span class="sr-only">Error:</span>
+  				menor de 10
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="guardarDatos()">Guardar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
